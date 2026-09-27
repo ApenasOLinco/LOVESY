@@ -8,7 +8,6 @@
 
 #region TEXT FORMAT
 BOLD=$'\033[1m'
-ITALIC=$'\033[3m'
 #endregion
 
 #region FOREGROUND COLORS
