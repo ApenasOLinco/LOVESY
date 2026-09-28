@@ -89,10 +89,20 @@ get-download-urls() {
 
 urls=$(get-download-urls "$inputFilePath")
 
+processed=0
+total=$(echo "$urls" | wc -l)
 for url in $urls; do
-	yt-dlp \
-		-f "bestvideo[height<=$quality]+bestaudio" \
-		--merge-output-format mp4 \
-		-o "./$outputDir/(Quality: $quality) %(uploader)s - %(title)s.%(ext)s" \
-		"$url"
+	if (
+		yt-dlp --quiet --progress \
+			-f "bestvideo[height<=$quality]+bestaudio" \
+			--merge-output-format mp4 \
+			-o "$outputDir/(Quality: $quality) %(uploader)s - %(title)s.%(ext)s" \
+			"$url" 2>/dev/null
+	); then
+		echo "Sucess processing $url"
+	else
+		echo "Failed to process $url"
+	fi
+	((processed+=1))
+	echo "Processed Videos: $processed of $total"
 done
