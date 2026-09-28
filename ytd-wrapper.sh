@@ -9,8 +9,8 @@
 export APP_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck disable=SC2155
 export MODULES_DIR="$APP_ROOT/modules"
-
-source './modules/util.sh'
+# shellcheck disable=SC1091
+source "$MODULES_DIR/util.sh"
 
 #region ARGUMENTS
 export DEFAULT_QUALITY=1080
