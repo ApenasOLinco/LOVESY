@@ -16,6 +16,10 @@ source "$MODULES_DIR/util.sh"
 export DEFAULT_QUALITY=1080
 export DEFAULT_INPUT_FILE_PATH="$APP_ROOT/urls.txt"
 export DEFAULT_OUTPUT_DIR="$APP_ROOT/downloaded/"
+
+quality=$DEFAULT_QUALITY
+inputFilePath=$DEFAULT_INPUT_FILE_PATH
+outputDir=$DEFAULT_OUTPUT_DIR
 #endregion
 
 function processArgs() {
